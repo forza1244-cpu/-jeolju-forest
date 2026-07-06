@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFEDF8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>주(酒)도권 절주숲</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./assets/app-icon-512.png" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <main id="appStage" class="app-stage">
+      <section id="homeView" class="view active">
+        <img class="asset background" src="./assets/background.png" alt="" />
+        <img class="asset leaf-canopy" src="./assets/leaf-canopy.png" alt="" />
+        <img class="asset fairy" src="./assets/fairy.png" alt="요정 캐릭터" />
+        <button id="goalLeafButton" class="goal-leaf-button" type="button" aria-label="목표 잔 수 수정">
+          <img class="asset goal-leaf" src="./assets/goal-leaf.png" alt="" />
+          <span id="goalText" class="goal-text">목표: 0잔</span>
+        </button>
+        <img class="asset speech-bubble" src="./assets/speech-bubble.png" alt="주를 이기는 주, 내가 잡는 주도권" />
+        <div class="calendar-area">
+          <img class="asset calendar-card" src="./assets/calendar-card.png" alt="" />
+          <img id="monthImage" class="asset month-image" src="./assets/month-07.png" alt="2026년 7월" />
+          <div class="weekday-row" aria-hidden="true">
+            <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+          </div>
+          <div id="calendarGrid" class="calendar-grid"></div>
+          <button id="prevMonth" class="month-btn prev" type="button" aria-label="이전 달">‹</button>
+          <button id="nextMonth" class="month-btn next" type="button" aria-label="다음 달">›</button>
+        </div>
+      </section>
+
+      <section id="bookshelfView" class="view">
+        <img class="asset background" src="./assets/background-bookshelf.png" alt="" />
+        <img class="asset bookshelf-leafcanopy" src="./assets/bookshelf-leaf.png" alt="" />
+        <img class="asset bookshelf-leaf1" src="./assets/bookshelf-leaf1.png" alt="" />
+        <img class="asset bookshelf-leaf2" src="./assets/bookshelf-leaf2.png" alt="" />
+        <img class="asset bookshelf-leaf3" src="./assets/bookshelf-leaf3.png" alt="" />
+        <img class="asset bookshelf-light light1" src="./assets/light1.png" alt="" />
+        <img class="asset bookshelf-light light2" src="./assets/light2.png" alt="" />
+        <img class="asset bookshelf-light light3" src="./assets/light3.png" alt="" />
+        <img class="asset bookshelf-light light4" src="./assets/light4.png" alt="" />
+        <img class="asset bookshelf-light light5" src="./assets/light5.png" alt="" />
+        <img class="asset bookshelf-light light6" src="./assets/light6.png" alt="" />
+        <img class="asset bookshelf-light light7" src="./assets/light7.png" alt="" />
+        <img class="asset bookshelf-light light8" src="./assets/light8.png" alt="" />
+        <div class="sub-page-card bookshelf-image-ui">
+          <div id="bookshelfHome" class="bookshelf-home image-bookshelf-home">
+            <img class="asset bookshelf-screen-main" src="./assets/bookshelf-screen-main.png" alt="" />
+            <button class="book-card image-book-card bookshelf-btn-question" data-book="random" type="button" aria-label="오늘의 질문"><img src="./assets/bookshelf-btn-question.png" alt="" /></button>
+            <button class="book-card image-book-card bookshelf-btn-answers" data-book="answers" type="button" aria-label="답변 모아보기"><img src="./assets/bookshelf-btn-answers.png" alt="" /></button>
+            <button class="book-card image-book-card bookshelf-btn-memo" data-book="memos" type="button" aria-label="캘린더 메모"><img src="./assets/bookshelf-btn-memo.png" alt="" /></button>
+          </div>
+          <div id="randomScreen" class="subscreen bookshelf-question-screen hidden">
+            <img class="asset bookshelf-screen-question-detail" src="./assets/bookshelf-screen-question-detail.png" alt="" />
+            <button class="back-shelf image-action bookshelf-btn-back" type="button" aria-label="책장으로"><img src="./assets/back_btn_leaf.png" alt="" /></button>
+            <p id="dailyNotice" class="notice"></p>
+            <h3 id="questionText">질문</h3>
+            <textarea id="answerInput" maxlength="1000" placeholder="여기에 답변을 입력하세요."></textarea>
+            <div class="count"><span id="answerCount">0</span> / 1000</div>
+            <button id="changeQuestion" class="soft-btn image-action bookshelf-btn-change-question" type="button" aria-label="질문 바꾸기"><img src="./assets/bookshelf-btn-change-question.png" alt="" /></button>
+            <button id="saveAnswer" class="main-btn image-action bookshelf-btn-save-answer" type="button" aria-label="답변 저장"><img src="./assets/bookshelf-btn-save-answer.png" alt="" /></button>
+          </div>
+          <div id="answersScreen" class="subscreen bookshelf-answers-screen hidden">
+            <img class="asset bookshelf-screen-answers-detail" src="./assets/bookshelf-screen-answers-detail.png" alt="" />
+            <button class="back-shelf image-action bookshelf-btn-back" type="button" aria-label="책장으로"><img src="./assets/back_btn_leaf.png" alt="" /></button>
+            <div id="answerList" class="list"></div>
+          </div>
+          <div id="memosScreen" class="subscreen bookshelf-memos-screen hidden">
+            <img class="asset bookshelf-screen-memos-detail" src="./assets/bookshelf-screen-memos-detail.png" alt="" />
+            <button class="back-shelf image-action bookshelf-btn-back" type="button" aria-label="책장으로"><img src="./assets/back_btn_leaf.png" alt="" /></button>
+            <div id="memoList" class="list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="statsView" class="view">
+        <img class="asset background" src="./assets/background-stats.png" alt="" />
+        <img class="asset stats-leafcanopy" src="./assets/bookshelf-leaf.png" alt="" />
+        <img class="asset stats-fairy" src="./assets/fairy.png" alt="" />
+        <img class="asset stats-screen-detail" src="./assets/stats-screen-detail.png" alt="" />
+        <div class="stats-scroll-area">
+          <h2 class="stats-section-title">[이번 달 음주통계]</h2>
+          <div class="stats-card">
+            <div><b id="noDrinkDays">0</b><span>무음주일</span></div>
+            <div><b id="drinkDays">0</b><span>마신 날</span></div>
+            <div><b id="totalDrinks">0</b><span>총 잔 수</span></div>
+            <div><b id="remainDrinks">0잔</b><span>목표까지 남은 잔 수</span></div>
+          </div>
+          <div class="stats-divider"></div>
+          <h2 class="stats-section-title estimate-section-title">[이번 달 음주기록]</h2>
+          <div class="estimate-card">
+            <span>[예상 소비 금액]</span>
+            <b id="estimatedMoney">0원</b>
+            <small>이번 달 기록을 기준으로 계산했어요.</small>
+          </div>
+          <div class="estimate-card">
+            <span>[음주 예상 칼로리]</span>
+            <b id="estimatedKcal">0kcal</b>
+
+          </div>
+          <div id="savingEstimateCard" class="estimate-card savings-card hidden">
+            <span>[목표보다 아낀 것]</span>
+            <b>예상 절약 금액 <em id="savedMoney">0원</em></b>
+            <b>예상 줄인 칼로리 <em id="savedKcal">0kcal</em></b>
+          </div>
+          <p class="stats-note">실제 금액과 칼로리는 제품과 장소에 따라 달라질 수 있어요.</p>
+          <div class="stats-divider recovery-divider"></div>
+          <section class="recovery-section">
+            <div class="section-header">
+              <h2>[ 절주에 도움 되는 건강 정보 ]</h2>
+              <p>술이 없는 날은 몸이 회복할 시간을 만들어줘요 ( ･ㅂ･)و ̑̑</p>
+            </div>
+            <div id="recoveryCards" class="recovery-cards"></div>
+            <p class="recovery-source-note">출처: 질병관리청 국가건강정보포털 & 보건복지부 절주 실천수칙</p>
+          </section>
+          <a class="instagram-link-card" href="https://www.instagram.com/judogwon_19?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">주(酒)도권 알아보기˖ ࣪⊹</a>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav" aria-label="하단 메뉴">
+      <img class="menu-bg" src="./assets/menu-bar.png" alt="" />
+      <button class="tab active" data-view="homeView" type="button" aria-label="홈"><img src="./assets/home-icon.png" alt="" /></button>
+      <button class="tab" data-view="bookshelfView" type="button" aria-label="기록 책장"><img src="./assets/bookshelf-icon.png" alt="" /></button>
+      <button class="tab" data-view="statsView" type="button" aria-label="통계"><img src="./assets/stats-icon.png" alt="" /></button>
+    </nav>
+  </div>
+
+  <div id="recordModal" class="modal hidden">
+    <div class="modal-card">
+      <button id="closeModal" class="x" type="button">×</button>
+      <h2 id="recordTitle">기록하기</h2>
+      <div class="choice">
+        <button id="noDrinkBtn" type="button">안 마셨어요</button>
+        <button id="drinkBtn" type="button">마셨어요</button>
+      </div>
+      <div id="drinkFields" class="hidden">
+        <label for="drinkType">주종</label>
+        <select id="drinkType"><option>소주</option><option>맥주</option><option>와인</option><option>막걸리</option><option>하이볼</option><option>칵테일</option><option>기타</option></select>
+        <div id="otherDrinkWrap" class="hidden">
+          <label for="otherDrinkName">기타 주종</label>
+          <input id="otherDrinkName" type="text" maxlength="20" placeholder="예: 샴페인" />
+        </div>
+        <label for="drinkAmount">잔 수</label>
+        <input id="drinkAmount" type="number" min="1" step="1" placeholder="1" />
+      </div>
+      <label for="drinkMemo">메모</label>
+      <textarea id="drinkMemo" placeholder="오늘의 한 줄을 남겨보세요."></textarea>
+      <button id="saveRecord" class="main-btn" type="button">저장하기</button>
+    </div>
+  </div>
+
+  <div id="goalModal" class="modal hidden">
+    <div class="modal-card goal-modal-card">
+      <button id="closeGoalModal" class="x" type="button">×</button>
+      <h2 id="goalModalTitle">이번 달 목표 잔 수</h2>
+      <p id="goalHelp" class="goal-help">남은 수정 횟수 : 1번</p>
+      <input id="goalInput" type="number" min="0" max="30" step="1" placeholder="예: 5" />
+      <button id="saveGoal" class="main-btn" type="button">목표 저장하기</button>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

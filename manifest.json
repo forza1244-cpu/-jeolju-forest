@@ -1,0 +1,16 @@
+﻿{
+  "name": "주(酒)도권 절주숲",
+  "short_name": "절주숲",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FFEDF8",
+  "theme_color": "#FFEDF8",
+  "icons": [
+    {
+      "src": "./assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
