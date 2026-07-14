@@ -473,9 +473,7 @@ label { display: block; margin: 13px 0 7px; font-size: 16px; }
 }
 
 
-/* v17 메뉴 아이콘 위치 고정 수정
-   좌표와 크기는 사용자가 준 값 그대로 유지하고,
-   클릭 표시 때문에 아이콘이 메뉴바 밖으로 튀어나가지 않게 transform 제거 */
+
 .tab {
   opacity: 1 !important;
   transform: none !important;
@@ -504,8 +502,7 @@ label { display: block; margin: 13px 0 7px; font-size: 16px; }
 }
 
 
-/* v18 전체 폰트 크기 확대 */
-/* 목표 잔 수: 17px */
+
 .goal-text {
   font-size: 17px !important;
   line-height: 17px !important;
@@ -517,14 +514,14 @@ label { display: block; margin: 13px 0 7px; font-size: 16px; }
   transform: translate(calc(-50% - 5px), -50%) !important;
 }
 
-/* 캘린더 요일: 15px */
+
 .weekday-row {
   font-size: 15px !important;
   line-height: 16px !important;
   top: 314px !important;
 }
 
-/* 캘린더 날짜 숫자: 19px */
+
 .day {
   width: 27px !important;
   height: 27px !important;
@@ -532,19 +529,19 @@ label { display: block; margin: 13px 0 7px; font-size: 16px; }
   line-height: 27px !important;
 }
 
-/* 날짜가 커져서 줄 간격도 약간 조정 */
+
 .calendar-grid {
   top: 350px !important;
   gap: 9px 0 !important;
 }
 
-/* 월 이동 화살표도 조금 키움 */
+
 .month-btn {
   font-size: 27px !important;
   line-height: 32px !important;
 }
 
-/* 기록 모달/목표 모달 글자도 작아 보이지 않게 확대 */
+
 .modal-card {
   font-size: 18px !important;
 }
@@ -561,7 +558,7 @@ label {
   font-size: 18px !important;
 }
 
-/* 책장/통계 화면 기본 글자 확대 */
+
 .sub-page-card {
   font-size: 18px !important;
 }
@@ -777,6 +774,8 @@ label {
 #bookshelfView .image-action img {
   object-fit: contain !important;
 }
+
+
 /* Bookshelf 3x-export coordinate lock */
 .bookshelf-leafcanopy {
   left: -47.18px !important;
